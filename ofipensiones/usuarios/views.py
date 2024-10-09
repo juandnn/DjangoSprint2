@@ -10,12 +10,17 @@ def usuarios_view(request, username=None):
     if request.method == 'GET':
         if username:
             try:
-                usuario = vl.get_usuario_by_username(username)
-                usuario_dto = serializers.serialize('json', [usuario])
-                return HttpResponse(usuario_dto, 'application/json')
+                usuario_dto = vl.get_usuario_by_username(username)
+                usuario = serializers.serialize('json', [usuario_dto])
+                return HttpResponse(usuario, 'application/json')
             except vl.models.Usuario.DoesNotExist:
                 return HttpResponse(json.dumps({'error': 'Usuario no encontrado'}), 'application/json', status=404)
         else:
-            usuarios = vl.get_usuarios()
-            usuarios_dto = serializers.serialize('json', usuarios)
-            return HttpResponse(usuarios_dto, 'application/json')
+            usuarios_dto = vl.get_usuarios()
+            usuarios = serializers.serialize('json', usuarios_dto)
+            return HttpResponse(usuarios, 'application/json')
+    
+    if request.method == 'POST':
+        usuario_dto = vl.update_usuario(username, json.loads(request.body.decode('utf-8')))
+        usuario = serializers.serialize('json', [usuario_dto])
+        return HttpResponse(usuario, 'application/json')

@@ -8,5 +8,6 @@ from django.views.decorators.csrf import csrf_exempt
 def responsables_economicos_view(request):
     if request.method == 'GET':
         responsable_economicos = vl.get_responsables_economicos()
-        variables_dto = serializers.serialize('json', responsable_economicos)
-    return HttpResponse(variables_dto, 'application/json')
+        responsable_economicos_dto = serializers.serialize('json', responsable_economicos)
+    return HttpResponse(responsable_economicos_dto, 'application/json')
+

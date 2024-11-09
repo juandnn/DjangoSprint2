@@ -179,7 +179,7 @@ resources:
           sudo apt install python3-pip -y
           sudo mkdir /labs
           cd /labs
-          sudo git clone https://github.com/ISIS2503/ofipensiones.git
+          sudo git clone https://github.com/juandnn/DjangoSprint2.git
           cd DjangoSprint2/ofipensiones/
           sudo pip3 install -r requirements.txt
 - type: compute.v1.instance

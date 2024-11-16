@@ -82,14 +82,27 @@ WSGI_APPLICATION = 'ofipensiones.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': 'ofipen',
-        'USER': 'juanda',
-        'PASSWORD': 'obando',
-        'HOST': 'localhost',
-        'PORT': '5434',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'ofipensiones_db',
+        'USER': 'ofipensiones_user',
+        'PASSWORD': 'isis2503',
+        'HOST': '10.128.0.52',
+        'PORT': '',
     }
 }
+
+
+# para probar local
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': 'ofipen',
+#         'USER': 'juanda',
+#         'PASSWORD': 'obando',
+#         'HOST': 'localhost',
+#         'PORT': '5434',
+#     }
+# }
 
 
 # Password validation

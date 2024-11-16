@@ -1,0 +1,10 @@
+<H3> Bienvendio al registro de OfiPensiones </H3>
+
+
+<form method="post" action = "">
+    {% csrf_token %}
+    {{ form.as_p }}
+    
+    <input type="submit" value="Registrar" />
+</form>
+

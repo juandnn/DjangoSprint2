@@ -1,7 +1,10 @@
 from django.http import HttpResponse
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.forms import AuthenticationForm
+
 from .forms import CreateUserForm
+
 
 
 def register(request):
@@ -11,10 +14,12 @@ def register(request):
         form = CreateUserForm(request.POST)
         if form.is_valid():
             form.save()
+            return redirect('login')
 
     dicc = {'form':form}
     return render(request, 'register.html', dicc )
 
 def login(request):
-    dicc = {'welcome_text':'Holaaa!!! '}
+    form = AuthenticationForm()
+    dicc = {'form':form}
     return render(request, 'login.html', dicc )
